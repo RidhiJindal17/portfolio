@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import profileImg from '../assets/user_profile_v3.jpg';
 
-const Hero = () => {
-  const roles = [
-    "Frontend Developer",
-    "UI/UX Enthusiast",
-    "Creative Coder"
-  ];
+const roles = [
+  "AI/ML",
+  "Full Stack Development",
+  "Cybersecurity",
+  "Agentic AI Engineering"
+];
 
+const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -32,7 +33,7 @@ const Hero = () => {
     }, typeSpeed);
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentRoleIndex, roles]);
+  }, [currentText, isDeleting, currentRoleIndex]);
 
   // Floating particles generator
   const renderParticles = () => {
@@ -62,13 +63,6 @@ const Hero = () => {
     ));
   };
 
-  const socialLinks = [
-    { icon: <FaGithub />, href: "https://github.com/RidhiJindal17" },
-    { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/ridhi-jindal-4835bb30b/" },
-    { icon: <FaTwitter />, href: "#" },
-    { icon: <FaEnvelope />, href: "#" },
-  ];
-
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden z-10">
       {/* Particles layer */}
@@ -91,19 +85,19 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-block px-4 py-2 rounded-full glass mb-4 border border-neonPurple/50"
           >
-            <span className="text-neonPink font-medium text-sm tracking-widest uppercase">
-              Welcome to my universe
+            <span className="text-neonPink font-medium text-xs tracking-widest uppercase">
+              AI Developer | Full Stack Developer | Cybersecurity Enthusiast
             </span>
           </motion.div>
 
           <h1 className="text-5xl md:text-6xl font-space font-bold leading-tight">
-            Web Developer & <br />
-            <span className="text-gradient">Cyber Security Engineer</span>
+            Ridhi Jindal <br />
+            <span className="text-gradient">Cybersecurity & AI Enthusiast</span>
           </h1>
 
           <div className="h-12 flex items-center justify-center lg:justify-start">
             <h2 className="text-2xl md:text-3xl text-gray-300 font-light">
-              <span className="mr-2">I am a</span>
+              <span className="mr-2">Focusing on</span>
               <span className="text-white font-medium border-r-2 border-neonPink pr-2 animate-pulse">
                 {currentText}
               </span>
@@ -111,27 +105,52 @@ const Hero = () => {
           </div>
 
           <p className="text-gray-400 max-w-xl mx-auto lg:mx-0 text-lg leading-relaxed">
-            I craft immersive, secure, and high-performance web experiences using modern technologies, combining creative frontend development with a passion for cyber security.
+            B.Tech Computer Science & Engineering student at Parul University with a dual focus on cybersecurity and AI. Experienced in building full-stack AI-powered applications, security tooling, and intelligent systems.
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
             <motion.a
-              href="#projects"
+              href="/resume.pdf"
+              download="Ridhi_Jindal_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-neonPurple to-neonPink rounded-full font-semibold text-lg hover:shadow-[0_0_25px_rgba(176,38,255,0.6)] transition-all duration-300 w-full sm:w-auto text-center"
+              className="px-6 py-3.5 bg-gradient-to-r from-neonPurple to-neonPink rounded-full font-semibold text-base hover:shadow-[0_0_25px_rgba(176,38,255,0.6)] transition-all duration-300 text-center flex-1 sm:flex-initial min-w-[160px]"
             >
-              View Projects
+              Download Resume
             </motion.a>
 
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 glass border border-gray-600 hover:border-neonBlue rounded-full font-semibold text-lg hover:text-neonBlue hover:shadow-[0_0_20px_rgba(0,34,255,0.4)] transition-all duration-300 w-full sm:w-auto text-center"
+              className="px-6 py-3.5 glass border border-gray-600 hover:border-neonPurple rounded-full font-semibold text-base hover:text-neonPurple hover:shadow-[0_0_20px_rgba(176,38,255,0.4)] transition-all duration-300 text-center flex-1 sm:flex-initial min-w-[160px]"
             >
-              Download Resume
+              Contact Me
+            </motion.a>
+
+            <motion.a
+              href="https://github.com/RidhiJindal17"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-5 py-3.5 glass border border-gray-600 hover:border-white rounded-full font-semibold text-base hover:text-white transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-initial min-w-[140px]"
+            >
+              <FaGithub /> GitHub
+            </motion.a>
+
+            <motion.a
+              href="https://www.linkedin.com/in/ridhi-jindal-4835bb30b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-5 py-3.5 glass border border-gray-600 hover:border-neonBlue rounded-full font-semibold text-base hover:text-neonBlue transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-initial min-w-[140px]"
+            >
+              <FaLinkedin /> LinkedIn
             </motion.a>
           </div>
 

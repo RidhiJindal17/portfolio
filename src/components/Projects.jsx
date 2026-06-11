@@ -39,9 +39,24 @@ const ProjectCard = ({ project, index }) => {
           {project.title}
         </h3>
 
-        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+        <p className="text-gray-400 text-sm leading-relaxed mb-4">
           {project.description}
         </p>
+
+        {/* Key Features */}
+        {project.features && project.features.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-xs font-space font-bold uppercase tracking-wider text-neonPink mb-2">Key Features</h4>
+            <ul className="space-y-1.5">
+              {project.features.map((feature, i) => (
+                <li key={i} className="text-xs text-gray-300 flex items-start gap-1.5 leading-relaxed">
+                  <span className="text-neonPurple mt-1">●</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Buttons */}
         <div className="flex items-center gap-4">
@@ -49,8 +64,8 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 text-sm font-medium transition-all"
           >
             <FaGithub /> GitHub
@@ -59,8 +74,8 @@ const ProjectCard = ({ project, index }) => {
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-neonPurple to-neonPink text-sm font-bold shadow-lg shadow-neonPurple/20"
           >
             <FaExternalLinkAlt /> Live Demo

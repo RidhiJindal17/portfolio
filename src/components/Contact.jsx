@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactInfoCard = ({ icon, title, value, href }) => (
   <motion.a
@@ -20,25 +21,73 @@ const ContactInfoCard = ({ icon, title, value, href }) => (
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus('Please fill in all fields.');
+    
+    if (!formData.name.trim()) {
+      setStatus({ type: 'error', message: 'Name is required.' });
       return;
     }
-    // Simulation of form submission
-    setStatus('Sending...');
-    setTimeout(() => {
-      setStatus('Message sent successfully!');
+    if (!formData.email.trim()) {
+      setStatus({ type: 'error', message: 'Email is required.' });
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+    if (!formData.message.trim()) {
+      setStatus({ type: 'error', message: 'Message is required.' });
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration keys are missing in your environment.');
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        {
+          publicKey: publicKey,
+        }
+      );
+
+      setStatus({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' });
       
-      // Clear message after 2 seconds
       setTimeout(() => {
-        setStatus('');
-      }, 2000);
-    }, 1500);
+        setStatus({ type: '', message: '' });
+      }, 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      const errorMsg = error?.text || error?.message || (typeof error === 'string' ? error : JSON.stringify(error)) || 'Failed to send message. Please try again.';
+      setStatus({ 
+        type: 'error', 
+        message: errorMsg 
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -123,8 +172,9 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300 ml-1">Your Name</label>
+                <label htmlFor="contact-name" className="text-sm font-medium text-gray-300 ml-1">Your Name</label>
                 <input
+                  id="contact-name"
                   type="text"
                   placeholder="Enter your name"
                   value={formData.name}
@@ -134,8 +184,9 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300 ml-1">Email Address</label>
+                <label htmlFor="contact-email" className="text-sm font-medium text-gray-300 ml-1">Email Address</label>
                 <input
+                  id="contact-email"
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
@@ -145,8 +196,9 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300 ml-1">Message</label>
+                <label htmlFor="contact-message" className="text-sm font-medium text-gray-300 ml-1">Message</label>
                 <textarea
+                  id="contact-message"
                   rows="4"
                   placeholder="Tell me about your project..."
                   value={formData.message}
@@ -156,17 +208,29 @@ const Contact = () => {
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={isLoading ? {} : { scale: 1.02 }}
+                whileTap={isLoading ? {} : { scale: 0.98 }}
                 type="submit"
-                className="w-full bg-gradient-to-r from-neonPurple to-neonPink text-white font-bold py-4 rounded-2xl shadow-lg shadow-neonPurple/20 flex items-center justify-center gap-2 group"
+                disabled={isLoading}
+                className="w-full bg-gradient-to-r from-neonPurple to-neonPink text-white font-bold py-4 rounded-2xl shadow-lg shadow-neonPurple/20 flex items-center justify-center gap-2 group disabled:opacity-75 disabled:cursor-not-allowed"
               >
-                Send Message <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                {isLoading ? 'Sending...' : 'Send Message'}{' '}
+                {!isLoading && (
+                  <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                )}
               </motion.button>
               
-              {status && (
-                <p className={`text-center text-sm mt-4 ${status.includes('successfully') ? 'text-green-400' : 'text-gray-400'}`}>
-                  {status}
+              {status.message && (
+                <p
+                  className={`text-center text-sm mt-4 ${
+                    status.type === 'success'
+                      ? 'text-green-400'
+                      : status.type === 'error'
+                      ? 'text-rose-500'
+                      : 'text-gray-400'
+                  }`}
+                >
+                  {status.message}
                 </p>
               )}
             </form>

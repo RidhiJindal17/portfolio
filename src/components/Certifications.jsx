@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaCertificate, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCertificate, FaExternalLinkAlt, FaDownload } from 'react-icons/fa';
 import { certificationsData } from '../data/certificationsData';
 
 const CertificationCard = ({ cert, index }) => (
@@ -55,17 +55,29 @@ const CertificationCard = ({ cert, index }) => (
       </div>
     </div>
 
-    {/* Footer - View Certificate Button */}
-    <div className="p-6 pt-0 mt-auto">
+    {/* Footer - View Certificate & Download Button */}
+    <div className="p-6 pt-0 mt-auto flex items-center justify-between">
       <motion.a
         href={cert.viewLink}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ x: 5 }}
-        className="inline-flex items-center gap-2 text-xs font-bold text-white/70 hover:text-white transition-colors cursor-pointer"
+        whileHover={{ x: 3 }}
+        className="inline-flex items-center gap-1.5 text-xs font-bold text-white/70 hover:text-white transition-colors cursor-pointer"
       >
-        VIEW CERTIFICATE <FaExternalLinkAlt />
+        VIEW CERTIFICATE <FaExternalLinkAlt className="text-[10px]" />
       </motion.a>
+      {cert.downloadLink && (
+        <motion.a
+          href={cert.downloadLink}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          className="inline-flex items-center gap-1 text-xs font-bold text-neonPink hover:text-neonPink/80 transition-colors cursor-pointer"
+        >
+          DOWNLOAD PDF <FaDownload className="text-[10px]" />
+        </motion.a>
+      )}
     </div>
 
     {/* Hover Glow Effect */}

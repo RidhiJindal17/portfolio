@@ -7,17 +7,18 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
+  { name: 'Achievements', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => {
+    return typeof window !== 'undefined' ? window.scrollY > 50 : false;
+  });
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
 
   useEffect(() => {
-    setIsScrolled(window.scrollY > 50);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 

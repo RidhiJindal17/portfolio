@@ -1,58 +1,46 @@
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaGraduationCap, FaCode, FaCloud } from 'react-icons/fa';
+import { FaGraduationCap, FaShieldAlt, FaBrain } from 'react-icons/fa';
 
 const experienceData = [
   {
     id: 1,
-    title: "Frontend Developer Intern",
-    organization: "TechNova Solutions",
-    duration: "Jan 2024 - Present",
-    description: "Building responsive web applications using React and Tailwind CSS. Collaborating with UI/UX designers to implement pixel-perfect designs.",
-    icon: <FaBriefcase />,
-    type: "internship"
+    title: "B.Tech in Computer Science & Engineering",
+    organization: "Parul University (Quick Heal IEP track)",
+    duration: "2023 - 2027",
+    description: "Currently pursuing B.Tech in CSE under the Industry Embedded Program (IEP) in association with Quick Heal Technologies. Maintaining a CGPA of 8.86. Foci include secure systems architectures, networking, and data structures.",
+    icon: <FaGraduationCap />,
+    type: "education"
   },
   {
     id: 2,
-    title: "Attended Technex 2026 Hackathon",
-    organization: "IIT (BHU), Varanasi",
-    duration: "Feb 2026",
-    description: "Participated in the Technex 2026 Hackathon organized at IIT (BHU), where I gained deep practical knowledge of frontend development, modern UI/UX design, project structuring, and real-world deployment workflows.",
+    title: "Cyber Security Specialist Training",
+    organization: "Quick Heal Academy",
+    duration: "Dec 2025 - Jul 2026",
+    description: "Completed specialized corporate training modules in systems, network, and cloud security. Obtained 5 Quick Heal security analyst credentials covering threat auditing, hardening, and network defenses.",
     highlights: [
-      "Frontend Development",
-      "Responsive UI Design",
-      "React & Modern Web Technologies",
-      "Deployment & Hosting",
-      "Team Collaboration",
-      "Real-world Problem Solving"
+      "Cyber Security Analyst",
+      "Network Security Analyst",
+      "System & Server Security",
+      "Cloud Infrastructure Security",
+      "Vulnerability Assessment & Penetration Testing (VAPT)"
     ],
-    icon: <FaCode />,
-    type: "hackathon"
+    icon: <FaShieldAlt />,
+    type: "security"
   },
   {
     id: 3,
-    title: "AWS Cloud Computing Session",
-    organization: "Parul University",
-    duration: "October 2026",
-    description: "Attended a one-month AWS Cloud Computing training session where I gained practical knowledge of AWS services and cloud infrastructure concepts.",
+    title: "Advanced AI & Systems Development",
+    organization: "Technical Portfolio Milestone",
+    duration: "Aug 2025 - Present",
+    description: "Built and deployed robust AI-powered applications combining FastAPI backend endpoints with React interfaces. Implemented LSTM networks for climate metrics analysis, Sentence-BERT for semantic text indexing, and LangChain agent frameworks.",
     highlights: [
-      "AWS S3 Bucket",
-      "Cloud Storage",
-      "Load Balancer Concepts",
-      "Cloud Infrastructure Basics",
-      "Deployment & Scalability",
-      "Practical AWS Knowledge"
+      "LSTM Anomaly Detection",
+      "Sentence-BERT Skill Profiling",
+      "Multi-Agent LangChain Workflows",
+      "Dockerized Secure Deployments"
     ],
-    icon: <FaCloud />,
-    type: "training"
-  },
-  {
-    id: 4,
-    title: "B.Tech in Computer Science Engineering",
-    organization: "Parul University (IEP – Quick Heal Technologies)",
-    duration: "2023 - 2027",
-    description: "Currently pursuing B.Tech in CSE with specialization in Industry Embedded Program (IEP) – Quick Heal Technologies. Building strong expertise in frontend development, cyber security, and modern technologies through academic learning and practical exposure.",
-    icon: <FaGraduationCap />,
-    type: "education"
+    icon: <FaBrain />,
+    type: "projects"
   }
 ];
 
@@ -72,7 +60,7 @@ const ExperienceCard = ({ item, index }) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
         viewport={{ once: true }}
-        className={`w-[45%] glass p-4 md:p-5 rounded-2xl border border-white/10 hover:border-neonPurple/50 transition-all duration-300 relative group`}
+        className="w-[45%] glass p-4 md:p-5 rounded-2xl border border-white/10 hover:border-neonPurple/50 transition-all duration-300 relative group"
       >
         <div className="flex items-center gap-4 mb-4">
           <div className="p-3 rounded-xl bg-neonPurple/10 text-neonPurple text-xl">
@@ -125,7 +113,7 @@ const Experience = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-space font-bold mb-4">
-            My <span className="text-gradient">Experience</span>
+            My <span className="text-gradient">Education & Timeline</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neonPurple to-neonPink mx-auto rounded-full" />
         </motion.div>

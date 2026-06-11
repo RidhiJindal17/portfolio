@@ -7,21 +7,21 @@ const About = () => {
       id: 1,
       icon: <FaGraduationCap className="text-4xl text-neonPurple" />,
       title: "Education",
-      description: "Currently pursuing B.Tech in Computer Science Engineering (specialization in IEP – Quick Heal Technologies) at Parul University. Building strong expertise in frontend development and cyber security.",
+      description: "Pursuing B.Tech CSE at Parul University under the Quick Heal IEP track. Specializing in secure software architectures.",
       delay: 0.2
     },
     {
       id: 2,
       icon: <FaCode className="text-4xl text-neonPink" />,
-      title: "Passion",
-      description: "Deeply passionate about crafting interactive user interfaces and exploring the intersection of design and clean code.",
+      title: "Full-Stack AI",
+      description: "Developing robust full-stack applications integrating state-of-the-art generative models and complex OCR automation.",
       delay: 0.4
     },
     {
       id: 3,
       icon: <FaRocket className="text-4xl text-neonBlue" />,
-      title: "Career Goals",
-      description: "Aiming to become a versatile Frontend Developer who builds scalable, user-centric products that solve real-world problems.",
+      title: "Cybersecurity",
+      description: "Deeply interested in threat analysis, VAPT, and network defense to safeguard modern digital ecosystems.",
       delay: 0.6
     }
   ];
@@ -53,13 +53,13 @@ const About = () => {
             className="space-y-6 text-gray-300 text-lg leading-relaxed"
           >
             <p>
-              Hello! I'm <span className="text-white font-semibold">Ridhi Jindal</span>, an aspiring web developer with an insatiable curiosity for modern technologies and a sharp eye for design.
+              Hello! I'm <span className="text-white font-semibold">Ridhi Jindal</span>, a B.Tech Computer Science & Engineering student at Parul University specializing in cybersecurity and AI. I bridge the gap between intelligent algorithmic performance and clean, secure software development.
             </p>
             <p>
-              My journey into programming started with a simple fascination for how things work on the internet. Since then, I have immersed myself in learning frontend development, turning complex problems into beautiful, intuitive, and highly functional digital experiences. Alongside frontend development, I am deeply interested in cyber security and continuously explore modern security concepts, cloud technologies, and secure web practices.
+              With a strong foundation in <span className="text-white font-semibold">AI & Full Stack Development</span>, I build applications that solve real-world problems. From parsing complex RFP documents to predicting climate trends, I leverage modern frameworks, natural language processing, and API design to create production-ready tools. My academic journey is enriched by the Industry Embedded Program (IEP) with <span className="text-white font-semibold">Quick Heal Technologies</span>, where I have obtained multiple certifications in systems, networks, and cloud security.
             </p>
             <p>
-              When I'm not coding, you can find me exploring new UI/UX trends, contributing to open-source, or experimenting with futuristic aesthetics. I believe that great design paired with flawless performance is the key to creating unforgettable products.
+              I thrive on <span className="text-white font-semibold">innovation, problem-solving, and team collaboration</span>. Whether participating in hackathons, contributing to open-source, or analyzing security vulnerabilities, my goal is to design secure, efficient, and user-centric systems.
             </p>
           </motion.div>
 
@@ -77,7 +77,7 @@ const About = () => {
               >
                 {/* Glow effect on hover */}
                 <div className={`absolute -inset-1 bg-gradient-to-r ${card.id === 1 ? 'from-neonPurple' : card.id === 2 ? 'from-neonPink' : 'from-neonBlue'} to-transparent opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
-                
+
                 <div className="relative z-10 flex flex-col items-center sm:items-start text-center sm:text-left">
                   <div className="mb-4 p-4 rounded-xl bg-darkBg/50 border border-white/5 inline-block group-hover:scale-110 transition-transform duration-300">
                     {card.icon}

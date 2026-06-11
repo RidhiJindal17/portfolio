@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { SiHackerrank, SiTryhackme, SiLeetcode } from 'react-icons/si';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiHackerrank, SiLeetcode } from 'react-icons/si';
 
 const platforms = [
   { name: 'GitHub', icon: <FaGithub />, color: '#ffffff', href: 'https://github.com/RidhiJindal17' },
   { name: 'LinkedIn', icon: <FaLinkedin />, color: '#0077B5', href: 'https://www.linkedin.com/in/ridhi-jindal-4835bb30b/' },
   { name: 'HackerRank', icon: <SiHackerrank />, color: '#2EC866', href: 'https://www.hackerrank.com/profile/ridhijindalgupta' },
-  { name: 'TryHackMe', icon: <SiTryhackme />, color: '#FF0000', href: '#' },
   { name: 'LeetCode', icon: <SiLeetcode />, color: '#FFA116', href: 'https://leetcode.com/u/RidhiJindal/' },
-  { name: 'Instagram', icon: <FaInstagram />, color: '#E4405F', href: 'https://www.instagram.com/friends_like_four_clover/' },
 ];
 
 const SocialPlatforms = () => {

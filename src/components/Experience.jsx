@@ -44,12 +44,12 @@ const experienceData = [
   },
   {
     id: 4,
-    title: "Winner – Hack It Out Hackathon, IIT BHU",
+    title: "Top 10 - Hack It Out Hackathon, IIT BHU",
     organization: "IIT BHU",
     duration: "March 2026",
-    description: "Won the Hack It Out Hackathon organized by IIT BHU for Green Earth, an environmental sustainability project focused on promoting eco-friendly initiatives and community engagement.",
+    description: "Qualified as one of the Top 10 in Hack It Out Hackathon organized by IIT BHU for Green Earth, an environmental sustainability project focused on promoting eco-friendly initiatives and community engagement.",
     highlights: [
-      "Hackathon Winner",
+      "Top 10 Hackathon",
       "Green Earth Project",
       "Environmental Sustainability",
       "Community Engagement"

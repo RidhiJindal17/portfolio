@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaShieldAlt, FaBrain } from 'react-icons/fa';
+import { FaGraduationCap, FaShieldAlt, FaBrain, FaTrophy } from 'react-icons/fa';
 
 const experienceData = [
   {
@@ -41,6 +41,21 @@ const experienceData = [
     ],
     icon: <FaBrain />,
     type: "projects"
+  },
+  {
+    id: 4,
+    title: "Winner – Hack It Out Hackathon, IIT BHU",
+    organization: "IIT BHU",
+    duration: "March 2026",
+    description: "Won the Hack It Out Hackathon organized by IIT BHU for Green Earth, an environmental sustainability project focused on promoting eco-friendly initiatives and community engagement.",
+    highlights: [
+      "Hackathon Winner",
+      "Green Earth Project",
+      "Environmental Sustainability",
+      "Community Engagement"
+    ],
+    icon: <FaTrophy />,
+    type: "hackathon"
   }
 ];
 

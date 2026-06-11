@@ -5,8 +5,8 @@ A premium, interactive portfolio website showcasing projects in **Cybersecurity*
 ---
 
 ## 🚀 Live Demos & Deployment Links
-* **Vercel Deployment:** [https://ridhi-jindal.vercel.app/](https://ridhi-jindal.vercel.app/)
-* **GitHub Repository:** [https://github.com/RidhiJindal17](https://github.com/RidhiJindal17)
+* **Vercel Deployment:** [https://ridhijindalportfolio.netlify.app/](https://ridhijindalportfolio.netlify.app/)
+* **GitHub Repository:** [https://github.com/RidhiJindal17](https://github.com/RidhiJindal17/portfolio)
 
 ---
 
